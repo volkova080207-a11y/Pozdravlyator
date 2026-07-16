@@ -11,14 +11,14 @@ using Pozdravlyator.Data;
 namespace Pozdravlyator.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260716114317_InitialCreate")]
+    [Migration("20260716125130_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "10.0.10");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.11");
 
             modelBuilder.Entity("Pozdravlyator.Models.Person", b =>
                 {
