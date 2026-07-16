@@ -1,0 +1,110 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+:root {
+    --pz-bg: #f4f1ff;
+    --pz-primary: #7c3aed;
+    --pz-primary-dark: #5b21b6;
+    --pz-accent: #f59e0b;
+    --pz-card-radius: 14px;
+}
+
+body {
+    background: linear-gradient(160deg, #f4f1ff 0%, #eef2ff 40%, #fdf4ff 100%);
+    min-height: 100vh;
+}
+
+.navbar {
+    background: linear-gradient(90deg, var(--pz-primary), var(--pz-primary-dark)) !important;
+}
+
+    .navbar-brand,
+    .navbar .nav-link {
+        color: #fff !important;
+        font-weight: 600;
+    }
+
+        .navbar .nav-link:hover {
+            color: var(--pz-accent) !important;
+        }
+
+h1, h3 {
+    color: var(--pz-primary-dark);
+}
+
+.card {
+    border: none;
+    border-radius: var(--pz-card-radius);
+    box-shadow: 0 6px 18px rgba(91, 33, 182, 0.12);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 24px rgba(91, 33, 182, 0.18);
+    }
+
+.btn-primary {
+    background-color: var(--pz-primary);
+    border-color: var(--pz-primary);
+}
+
+    .btn-primary:hover {
+        background-color: var(--pz-primary-dark);
+        border-color: var(--pz-primary-dark);
+    }
+
+.btn-outline-primary {
+    color: var(--pz-primary);
+    border-color: var(--pz-primary);
+}
+
+    .btn-outline-primary:hover {
+        background-color: var(--pz-primary);
+        border-color: var(--pz-primary);
+    }
+
+.table {
+    background: #fff;
+    border-radius: var(--pz-card-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(91, 33, 182, 0.08);
+}
+
+    .table thead {
+        background-color: var(--pz-primary);
+        color: #fff;
+    }
+
+footer {
+    background: transparent !important;
+    color: #6b7280;
+}

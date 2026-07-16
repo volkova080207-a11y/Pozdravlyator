@@ -1,0 +1,52 @@
+﻿@model List<Person>
+    @{
+    ViewData["Title"] = "Сегодняшние и ближайшие дни рождения";
+    }
+
+    <h1>🎉 Поздравлятор</h1>
+    <h3>Сегодняшние и ближайшие дни рождения (14 дней)</h3>
+
+    <p class="d-flex gap-2 mb-4">
+        <a asp-controller="Person" asp-action="Index" class="btn btn-outline-primary">Показать весь список</a>
+        <a asp-controller="Person" asp-action="Create" class="btn btn-primary">➕ Добавить запись</a>
+    </p>
+
+    @if (!Model.Any())
+{
+    <p>В ближайшие 14 дней дней рождения нет.</p>
+}
+else
+{
+    <div class="row">
+        @foreach (var person in Model)
+        {
+            var rowClass = person.IsToday ? "border-warning bg-warning-subtle" : "";
+        <div class="col-md-4 mb-3">
+            <div class="card @rowClass">
+                @if (!string.IsNullOrEmpty(person.PhotoPath))
+                    {
+                <img src="@person.PhotoPath" class="card-img-top" style="height:200px;object-fit:cover;" alt="@person.FullName" />
+                    }
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @person.FullName
+                        @if (person.IsToday)
+                            {
+                        <span class="badge bg-warning text-dark">Сегодня!</span>
+                            }
+                    </h5>
+                    <p class="card-text">
+                        Дата рождения: @person.BirthDate.ToString("dd.MM.yyyy")<br />
+                        Исполнится: @person.UpcomingAge лет<br />
+                        @if (!string.IsNullOrEmpty(person.Note))
+                            {
+                        <em>@person.Note</em>
+                            }
+                    </p>
+                    <a asp-controller="Person" asp-action="Details" asp-route-id="@person.Id" class="btn btn-sm btn-outline-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+}

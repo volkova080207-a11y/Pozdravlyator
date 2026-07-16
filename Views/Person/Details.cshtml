@@ -1,0 +1,25 @@
+@model Person
+@{
+    ViewData["Title"] = "Информация";
+}
+
+<h1>@Model.FullName</h1>
+
+@if (!string.IsNullOrEmpty(Model.PhotoPath))
+{
+<img src="@Model.PhotoPath" style="width:200px;height:200px;object-fit:cover;border-radius:8px;" class="mb-3" />
+}
+
+<dl class="row">
+    <dt class="col-sm-3">Дата рождения</dt>
+    <dd class="col-sm-9">@Model.BirthDate.ToString("dd.MM.yyyy")</dd>
+
+    <dt class="col-sm-3">Исполнится лет</dt>
+    <dd class="col-sm-9">@Model.UpcomingAge</dd>
+
+    <dt class="col-sm-3">Заметка</dt>
+    <dd class="col-sm-9">@Model.Note</dd>
+</dl>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Изменить</a>
+<a asp-action="Index" class="btn btn-secondary">Назад к списку</a>

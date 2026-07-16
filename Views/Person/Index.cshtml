@@ -1,0 +1,44 @@
+﻿@model List<Person>
+    @{
+    ViewData["Title"] = "Все дни рождения";
+    }
+
+    <h1>Все дни рождения</h1>
+    <p><a asp-action="Create" class="btn btn-primary">+ Добавить</a></p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Фото</th>
+                <th>ФИО</th>
+                <th>Дата рождения</th>
+                <th>Ближайший ДР через (дней)</th>
+                <th>Заметка</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model)
+        {
+            var days = (person.NextOccurrence(DateTime.Today) - DateTime.Today).Days;
+            var rowClass = person.IsToday ? "table-warning" : (days <= 7 ? "table-info" : "");
+            <tr class="@rowClass">
+                <td>
+                    @if (!string.IsNullOrEmpty(person.PhotoPath))
+                    {
+                    <img src="@person.PhotoPath" style="width:50px;height:50px;object-fit:cover;border-radius:50%;" />
+                    }
+                </td>
+                <td>@person.FullName</td>
+                <td>@person.BirthDate.ToString("dd.MM.yyyy")</td>
+                <td>@days</td>
+                <td>@person.Note</td>
+                <td class="d-flex gap-1">
+                    <a asp-action="Details" asp-route-id="@person.Id" class="btn btn-sm btn-outline-secondary">👁 Просмотр</a>
+                    <a asp-action="Edit" asp-route-id="@person.Id" class="btn btn-sm btn-outline-primary">✏️ Изменить</a>
+                    <a asp-action="Delete" asp-route-id="@person.Id" class="btn btn-sm btn-outline-danger">🗑 Удалить</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
